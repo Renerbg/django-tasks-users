@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="col-md-4 offset-md-4 mt-3">
+        
+        <form action="/tasks/create/" method="POST" class="card card-body" style="background-color:rgb(197, 209, 209);">
+            <h1 style="text-align: center;">Crear nueva tarea</h1>
+            {{error}}
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-primary mt-1">
+                <i class="bi bi-floppy"></i> Guardar Tarea
+            </button>
+        </form>
+    </div>
+</main>
+{% endblock %}

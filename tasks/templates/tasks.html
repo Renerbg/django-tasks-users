@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .card-photo {
+        cursor: pointer;
+    }
+
+    .card-photo:hover {
+        border: 2px solid rgb(3, 3, 44);
+        border-radius: 2px;
+    }
+</style>
+<h1 class="text-center md-5">{{title}}</h1>
+
+<h3 class="text-center md-5">{{error}}</h3>
+
+<div class="container">
+    <div class="row">
+        {% for task in tasks %}
+        <div class="col-md-4 p-1">
+            <div class="card  card-photo" style="width: 23rem; height: 15rem; background-color: rgb(197, 209, 209);">
+                <div class="card-body">
+                    <h5 class="card-title text-end">
+                        <a href="{% url 'task_detalle' task.id %}">
+                            {% if task.importante %}
+                            <strong style="color: red;">Tarea: {{task.titulo}} <i
+                                    class="bi bi-pencil-square"></i></strong>
+                            {% else %}
+                            Tarea: {{task.titulo}} <i class="bi bi-pencil-square"></i>
+                            {% endif %}
+                        </a>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Fecha de Creación: {{task.fecha_creacion}}</h6>
+                    <p class="card-text">Descripción: {{task.descripcion}}</p>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Creada por: {{task.user.username}}</h6>
+                    <div class="text-center">
+                        {% if task.fecha_completada == None %}
+                        <a href="{% url 'completada_task' task.id %}" class="btn btn-secondary">
+                            <i class="bi bi-clipboard-check"></i> Completada
+                        </a>
+                        {% endif %}
+                        <a href="{% url 'eliminar_task' task.id %}" class="btn btn-danger">
+                            <i class="bi bi-trash3"></i> Eliminar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

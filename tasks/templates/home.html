@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container py-3">
+    <section class="card card-body" style="background-color: rgb(197, 209, 209);">
+        <h1 class="display-2 text-center">CRUD DE TAREAS CON DJANGO</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod voluptates perspiciatis, vero fuga repellat velit. Nemo debitis dicta quibusdam laboriosam. Voluptates nihil aut consectetur repellendus ab tempore, praesentium impedit distinctio ad recusandae, quod, totam pariatur eaque molestias sed vitae dolore doloribus consequatur quibusdam doloremque sequi mollitia animi error! Repellendus esse distinctio consequuntur explicabo, maxime, debitis veritatis repellat hic neque dignissimos rerum dolor labore harum nihil mollitia! Dolores sit quo maiores incidunt accusantium nihil. Enim hic necessitatibus neque doloribus unde? Vero corrupti praesentium blanditiis quod totam ut repudiandae, molestiae dolorum rem sapiente nisi ipsa in assumenda quae tempora officia aut ipsum?</p>
+        {% if user.is_authenticated %}
+        <div class="text-center">
+            <a class="btn btn-primary mt-1" href="">
+                Bienvenido
+            </a>
+        </div>
+        {% else %}
+        <div class="text-center">
+            <a class="btn btn-primary mt-1" href="/signup/">
+                <strong><i class="bi bi-person-plus-fill"></i> Reguístrate ya!</strong>
+            </a>
+            <a class="btn btn-primary mt-1" href="/signin/">
+                <strong><i class="bi bi-person-square"></i> Inicia tu sesión</strong>
+            </a>
+        </div>
+        {% endif %}
+    </section>
+</main>
+
+{% endblock %}
